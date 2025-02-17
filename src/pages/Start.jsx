@@ -4,16 +4,12 @@ import InfoIcon from '../assets/infoIcon.svg';
 import BgImage from '../assets/starts-bg.png';
 import { useNavigate } from 'react-router-dom';
 
-
 function Start() {
-
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
 
     function handleNavigateLogin() {
-        navigate('./home')
+        navigate('./home');
     }
-
 
     return (
         <div className='relative flex flex-col items-center bg-[#151513] px-6 py-10 min-h-screen overflow-hidden font-display'>
@@ -23,9 +19,10 @@ function Start() {
                     <h1>FarBesh</h1>
                 </div>
                 <img src={InfoIcon} className='w-5 h-5' alt='Information' />
-            </header >
+            </header>
 
-            <div div className='relative flex flex-col flex-grow items-center gap-6 pb-40 w-full max-w-sm text-center' >
+            {/* Xatolik bor joy to‘g‘irlandi */}
+            <div className='relative flex flex-col flex-grow items-center gap-6 pb-40 w-full max-w-sm text-center'>
                 <section>
                     <h2 className='mt-8 font-semibold text-white text-2xl'>Taxi of your dreams</h2>
                     <p className='opacity-70 mt-2 font-medium text-white text-base'>
@@ -48,10 +45,9 @@ function Start() {
                     <a href='#' className='-bottom-5 z-10 absolute opacity-70 font-medium text-white text-base'>
                         Registratsiya
                     </a>
-
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 }
 
