@@ -1,3 +1,4 @@
+import React from 'react'
 import Logo from '../assets/logo.webp';
 import InfoIcon from '../assets/infoIcon.svg';
 import BgImage from '../assets/starts-bg.png';
@@ -36,11 +37,11 @@ function Start() {
                     <button
                         onClick={handleNavigateLogin}
                         type='button'
-                        className='bottom-5 z-10 absolute bg-gradient-to-r from-[#E9BC32] to-[#FFDC71] py-3 rounded-lg w-4/5 font-semibold text-black cursor-pointer active:scale-95 transition-[0.3s]'
+                        className='bottom-5 z-10 absolute bg-gradient-to-r from-[#E9BC32] to-[#FFDC71] py-3 rounded-lg w-4/5 font-semibold text-black active:scale-95 transition-[0.3s] cursor-pointer'
                     >
                         Kirish
                     </button>
-                    <a href='#' className='-bottom-5 z-10 absolute opacity-70 font-medium text-white text-base'>
+                    <a href='#' className='-bottom-5 z-10 absolute opacity-70 font-medium text-white text-base underline'>
                         Registratsiya
                     </a>
                 </div>

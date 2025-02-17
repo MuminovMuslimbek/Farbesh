@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MapComponent from "../components/MapComponent";
 import Location from "../assets/location.png";
+import navBurger from "../assets/burger.svg";
 import { AiOutlineClose, AiOutlineExclamationCircle } from "react-icons/ai";
 
 function Home() {
@@ -37,27 +38,27 @@ function Home() {
 
     return (
         <div className="relative flex flex-col mx-auto max-w-lg h-dvh">
-            {/* Xarita komponenti */}
+            <button className="z-1 absolute bg-white mt-[48px] ml-[24px] pt-[21px] pr-[16px] pb-[21px] pl-[16px] rounded-[50%] active:scale-95 transition-[0.3s] cursor-pointer">
+                <img src={navBurger} alt="" />
+            </button>
             <div>
                 <MapComponent userLocation={userLocation} />
             </div>
 
-            {/* Xabar ko‘rsatuvchi div */}
             {alertMessage && (
                 <div className={`fixed top-5 left-1/2 transform -translate-x-1/2 flex items-center px-3 py-2 rounded-lg shadow-lg text-white text-[12px] ${alertMessage.type === "error" ? "bg-[#191414] border border-red-600" : "bg-[#191414] border border-green-600"}`}>
                     <AiOutlineExclamationCircle className="mr-2 text-red-500" size={16} />
                     <span className="flex-grow whitespace-nowrap">{alertMessage.text}</span>
-                    <button onClick={() => setAlertMessage(null)}>
+                    <button onClick={() => setAlertMessage(null)} className="active:scale-95 transition-[0.3s]">
                         <AiOutlineClose className="text-gray-400 hover:text-white" size={14} />
                     </button>
                 </div>
             )}
 
-            {/* Tugma joylashgan qism bo‘sh joylarni egallashi uchun mt-auto qo‘shildi */}
             <div className="bottom-0 z-20 absolute bg-white shadow-xl py-4 rounded-tl-4xl rounded-tr-4xl w-full h-full max-h-[200px]">
                 <div className="flex justify-center items-center">
                     <button
-                        className="bottom-28 absolute flex items-center gap-2 bg-white px-20 py-3 border-2 border-black rounded-2xl font-semibold text-black cursor-pointer"
+                        className="bottom-28 absolute flex items-center gap-2 bg-white px-20 py-3 border-2 border-black rounded-2xl font-semibold text-black active:scale-95 transition-[0.3s] cursor-pointer"
                         onClick={handleLocation}
                     >
                         <img src={Location} alt="" width={20} />
@@ -65,13 +66,14 @@ function Home() {
                     </button>
                 </div>
                 <div className="flex justify-center items-center">
-                    <button className="bottom-3 absolute bg-[#151513] px-24 py-4 rounded-2xl font-semibold text-white cursor-pointer">
+                    <button className="bottom-3 absolute bg-[#151513] px-24 py-4 rounded-2xl font-semibold text-white active:scale-95 transition-[0.3s] cursor-pointer">
                         Buyurtma berish
                     </button>
                 </div>
             </div>
+
         </div>
     );
 }
 
-export default Home;
+export default React.memo(Home);

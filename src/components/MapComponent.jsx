@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -23,7 +24,7 @@ function ChangeView({ userLocation }) {
   return null;
 }
 
-export default function MapComponent({ userLocation }) {
+function MapComponent({ userLocation }) {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -31,13 +32,13 @@ export default function MapComponent({ userLocation }) {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center relative">
+    <div className="relative flex flex-col items-center w-full">
       {isClient && (
-        <div className="w-full relative">
+        <div className="relative w-full">
           <MapContainer
             center={userLocation || [40.3894, 71.7456]}
             zoom={13}
-            className="w-full min-h-[580px] relative z-0 shadow-lg"
+            className="z-0 relative shadow-lg w-full min-h-[580px]"
             attributionControl={false}
             zoomControl={false}
           >
@@ -55,9 +56,11 @@ export default function MapComponent({ userLocation }) {
           </MapContainer>
 
 
-          <div className="absolute bottom-0 w-full h-20 bg-gradient-to-t from-white to-transparent rounded-b-2xl"></div>
+          <div className="bottom-0 absolute bg-gradient-to-t from-white to-transparent rounded-b-2xl w-full h-20"></div>
         </div>
       )}
     </div>
   );
 }
+
+export default React.memo(MapComponent);
