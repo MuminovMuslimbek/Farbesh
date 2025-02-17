@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from '../assets/logo.webp';
 import InfoIcon from '../assets/infoIcon.svg';
 import BgImage from '../assets/starts-bg.png';
@@ -21,7 +20,6 @@ function Start() {
                 <img src={InfoIcon} className='w-5 h-5' alt='Information' />
             </header>
 
-            {/* Xatolik bor joy to‘g‘irlandi */}
             <div className='relative flex flex-col flex-grow items-center gap-6 pb-40 w-full max-w-sm text-center'>
                 <section>
                     <h2 className='mt-8 font-semibold text-white text-2xl'>Taxi of your dreams</h2>
@@ -38,7 +36,7 @@ function Start() {
                     <button
                         onClick={handleNavigateLogin}
                         type='button'
-                        className='bottom-5 z-10 absolute bg-gradient-to-r from-[#E9BC32] to-[#FFDC71] py-3 rounded-lg w-4/5 font-semibold text-black cursor-pointer'
+                        className='bottom-5 z-10 absolute bg-gradient-to-r from-[#E9BC32] to-[#FFDC71] py-3 rounded-lg w-4/5 font-semibold text-black cursor-pointer active:scale-95 transition-[0.3s]'
                     >
                         Kirish
                     </button>
