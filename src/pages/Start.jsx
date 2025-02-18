@@ -1,8 +1,7 @@
 import React from 'react'
-import Logo from '../assets/logo.webp';
-import InfoIcon from '../assets/infoIcon.svg';
 import BgImage from '../assets/starts-bg.png';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 
 function Start() {
     const navigate = useNavigate();
@@ -13,21 +12,15 @@ function Start() {
 
     return (
         <div className='relative flex flex-col items-center bg-[#151513] px-6 py-10 min-h-screen overflow-hidden font-display'>
-            <header className='flex justify-between items-center pb-6 border-[#737371] border-b w-full max-w-md'>
-                <div className='flex items-center gap-2 text-[#F5CE55] text-xl'>
-                    <img src={Logo} className='rounded-full w-12 h-12' alt='FarBesh Logo' />
-                    <h1>FarBesh</h1>
-                </div>
-                <img src={InfoIcon} className='w-5 h-5' alt='Information' />
-            </header>
+            <Header />
 
             <div className='relative flex flex-col flex-grow items-center gap-6 pb-40 w-full max-w-sm text-center'>
-                <section>
-                    <h2 className='mt-8 font-semibold text-white text-2xl'>Taxi of your dreams</h2>
+                <div>
+                    <h2 className='font-semibold text-white text-2xl'>Taxi of your dreams</h2>
                     <p className='opacity-70 mt-2 font-medium text-white text-base'>
                         Comfortable rides around the city
                     </p>
-                </section>
+                </div>
 
                 <div className='bottom-0 left-1/2 absolute flex justify-center items-center w-full max-w-xs -translate-x-1/2 transform'>
                     <img src={BgImage} alt='Background' className='-bottom-11 z-[-5] absolute w-[250px] h-auto' />
@@ -41,9 +34,9 @@ function Start() {
                     >
                         Kirish
                     </button>
-                    <a href='#' className='-bottom-5 z-10 absolute opacity-70 font-medium text-white text-base underline'>
-                        Registratsiya
-                    </a>
+                    <Link to='/register' className='-bottom-5 z-10 absolute opacity-70 font-medium text-white text-base underline'>
+                        Ro'yxatdan o'tish
+                    </Link>
                 </div>
             </div>
         </div>
