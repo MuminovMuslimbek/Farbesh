@@ -14,7 +14,7 @@ function Start() {
         <div className='relative flex flex-col items-center bg-[#151513] px-6 py-10 min-h-screen overflow-hidden font-display'>
             <Header />
 
-            <div className='relative flex flex-col flex-grow items-center gap-6 pb-40 w-full max-w-sm text-center'>
+            <div className='relative mt-[50px] flex flex-col flex-grow items-center gap-6 pb-40 w-full max-w-sm text-center'>
                 <div>
                     <h2 className='font-semibold text-white text-2xl'>Taxi of your dreams</h2>
                     <p className='opacity-70 mt-2 font-medium text-white text-base'>
