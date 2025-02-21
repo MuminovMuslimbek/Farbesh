@@ -26,7 +26,7 @@ function Register() {
           <button className="bg-[#FCE000] mt-[10px] px-3 py-2 rounded-md w-full max-w-2xl font-medium active:scale-95 transition-[0.3s] cursor-pointer">
             Jo'natish
           </button>
-          <p className='font-medium text-[12px] text-center'>Allaqachon hisobingiz bormi? <Link className='text-[#FCE000] underline'>Tizimga kirish</Link></p>
+          <p className='font-medium text-[12px] text-center'>Allaqachon hisobingiz bormi? <Link to={'/login'} className='text-[#FCE000] underline'>Tizimga kirish</Link></p>
         </form>
 
       </div>
