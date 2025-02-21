@@ -1,5 +1,5 @@
 // import { React, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import userLogo from "../assets/userLogo.png";
 import { IoIosArrowBack } from "react-icons/io";
 import Header from "../components/Header";
@@ -98,36 +98,37 @@ export default function Drivers() {
       car: "Captiva",
     },
   ];
+  const navigate = useNavigate()
 
   return (
-    <section className="max-w-lg h-dvh !relative mx-auto  overflow-hidden">
+    <section className="!relative mx-auto max-w-lg h-dvh overflow-hidden">
       <div className="mt-6 px-6">
         <Header />
-        <h1 className="text-center text-2xl font-bold  py-5">
+        <h1 className="py-5 font-bold text-2xl text-center">
           Haydovchilar
         </h1>
       </div>
-      <div className="overflow-y-auto overAuto h-[59%]  px-6  flex flex-col gap-[10px] items-center ">
+      <div className="flex flex-col items-center gap-[10px] px-6 h-[59%] overflow-y-auto overAuto">
         {users.map((user) => (
           <div
             key={user.id}
-            className="flex border p-2 rounded-2xl border-[#FCE000] w-full items-center justify-between"
+            className="flex justify-between items-center px-[20px] py-2 border border-[#FCE000] rounded-[16px] w-full"
           >
             <img className="w-[40px]" src={user.logo} alt="" />
-            <h2 className="text-sm font-semibold">{user.name}</h2>
-            <h2 className="text-sm font-semibold">{user.birthYear}</h2>
-            <h2 className="text-sm font-semibold">{user.car}</h2>
+            <h2 className="font-semibold text-sm">{user.name}</h2>
+            <h2 className="font-semibold text-sm">{user.birthYear}</h2>
+            <h2 className="font-semibold text-sm">{user.car}</h2>
           </div>
         ))}
       </div>
-      <div className="absolute w-full bottom-0">
-        <div className="w-full justify-center flex items-center z-30  rounded-t-4xl p-6  bottom-0 shadow-[0px_0px_60px_rgba(0,0,0,0.3)]">
-          <Link
-            className="flex items-center justify-center p-3 w-full bg-[#FCE000] rounded-2xl"
-            to={"/home"}
+      <div className="bottom-0 absolute w-full">
+        <div className="bottom-0 z-30 flex justify-center items-center shadow-[0px_0px_60px_rgba(0,0,0,0.3)] p-6 rounded-t-4xl w-full font-medium text-white">
+          <button
+            onClick={() => { navigate(-1) }}
+            className="flex justify-center items-center bg-[#FCE000] p-3 rounded-2xl w-full"
           >
             <IoIosArrowBack /> Ortga
-          </Link>
+          </button>
         </div>
       </div>
     </section>
