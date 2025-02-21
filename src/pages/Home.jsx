@@ -98,12 +98,12 @@ function Home() {
                     <div className="relative bg-white shadow-2xl p-6 rounded-xl w-[340px] h-auto">
                         <h3 className="mb-4 font-semibold text-2xl text-center">Buyurtma berish</h3>
                         <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-                            <select className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full text-gray-800 text-sm">
+                            <select className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFDC71] w-full text-gray-800 text-sm">
                                 <option value="" disabled>🚖 Qayerdan? - Qayerga?</option>
                                 <option value="beshariq-fargona">📍 Beshariqdan - Farg‘onaga</option>
                                 <option value="fargona-beshariq">📍 Farg‘onadan - Beshariqga</option>
                             </select>
-                            <select className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full text-gray-800 text-sm">
+                            <select className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFDC71] w-full text-gray-800 text-sm">
                                 <option value="" disabled>🔢 Yo‘lovchilar soni</option>
                                 <option value="1">🧍 1 kishi</option>
                                 <option value="2">🧑‍🤝‍🧑 2 kishi</option>
@@ -111,7 +111,7 @@ function Home() {
                                 <option value="4">👨‍👩‍👧‍👦 4 kishi</option>
                                 <option value="4">📦 Po'chta</option>
                             </select>
-                            <select className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full text-gray-800 text-sm">
+                            <select className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFDC71] w-full text-gray-800 text-sm">
                                 <option value="" disabled>🚻 Erkak yoki Ayol?</option>
                                 <option value="male">👨 Erkak</option>
                                 <option value="female">👩 Ayol</option>
@@ -121,7 +121,7 @@ function Home() {
                                 value={phone ? `+998 ${phone}` : ""}
                                 onChange={handlePhoneChange}
                                 placeholder="+998 00 000-00-00"
-                                className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full text-gray-800 text-sm"
+                                className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFDC71] w-full text-gray-800 text-sm"
                                 maxLength={17}
                             />
 
