@@ -3,11 +3,14 @@ import MapComponent from "../components/MapComponent";
 import Location from "../assets/location.png";
 import navBurger from "../assets/burger.svg";
 import { AiOutlineClose } from "react-icons/ai"; // Import close icon
+import driver from "../assets/driver.png";
+import login from "../assets/login.png"
 
 function Home() {
     const [userLocation, setUserLocation] = useState(null);
     const [alertMessage, setAlertMessage] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isOpenUl, setOpenUl] = useState(false)
     const [phone, setPhone] = useState("");
     const [route, setRoute] = useState("");
     const [passengerCount, setPassengerCount] = useState("");
@@ -67,27 +70,25 @@ function Home() {
     return (
         <div className="relative flex flex-col bg-gray-100 mx-auto max-w-md h-dvh font-display">
             <div className={`transition ${isModalOpen ? "blur-sm pointer-events-none" : ""}`}>
-                <button className="top-8 left-6 z-1 absolute bg-white shadow-md p-3 rounded-full active:scale-95 transition-all duration-300 cursor-pointer">
+                <button onClick={() => setOpenUl(!isOpenUl)} className="top-8 left-6 z-1 absolute bg-white shadow-md p-3 rounded-full active:scale-95 transition-all duration-300 cursor-pointer">
                     <img src={navBurger} alt="" className="w-6 h-6" />
                 </button>
                 <div>
                     <MapComponent userLocation={userLocation} />
                 </div>
-                <div className="bottom-0 z-20 absolute bg-white shadow-xl px-4 py-6 rounded-tl-3xl rounded-tr-3xl w-full h-full max-h-[220px] transition-transform duration-300 ease-in-out">
+                <div  className="bottom-0 z-20 absolute bg-white shadow-xl px-4 py-6 rounded-tl-3xl rounded-tr-3xl w-full h-full max-h-[220px] transition-transform duration-300 ease-in-out">
                     <div className="flex justify-center items-center">
                         <button
                             className="bottom-28 absolute flex items-center gap-2 bg-white px-20 py-3 border-2 border-black rounded-[12px] font-semibold text-black active:scale-95 transition-[0.3s] cursor-pointer"
-                            onClick={handleLocation}
+                             onClick={handleLocation}
                         >
                             <img src={Location} alt="" width={20} />
                             Lokatsiya
                         </button>
                     </div>
                     <div className="flex justify-center items-center">
-                        <button
-                            className="bottom-3 absolute bg-[#151513] px-24 py-4 rounded-[12px] font-semibold text-white active:scale-95 transition-[0.3s] cursor-pointer"
-                            onClick={() => setIsModalOpen(true)}
-                        >
+                        <button className="bottom-3 absolute bg-[#151513] px-24 py-4 rounded-[12px] font-semibold text-white active:scale-95 transition-[0.3s] cursor-pointer"
+                            onClick={() => setIsModalOpen(true)}>
                             Buyurtma berish
                         </button>
                     </div>
@@ -134,6 +135,23 @@ function Home() {
                         </button>
                     </div>
                 </div>
+            )}
+            {isOpenUl && (
+                <div className={"z-60 flex fixed items-center justify-center ml-[70px] mt-[90px] transition-all duration-300  opacity-100 scale-100  "}>
+                    <ul onClick={() => setOpenUl(false)} className="bg-white pt-[10px] pb-[10px] pl-[10px] pr-[10px] rounded-[4px]">
+                        <li>
+                            <button className="flex items-center">
+                                Haydovchilar <img src={driver} className="w-[30px]" alt="" />
+                            </button>
+                        </li>
+                        <li>
+                            <button className="flex items-center">
+                                Kirish <img className="w-[25px]" src={login} alt="" />
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
             )}
         </div>
     );
