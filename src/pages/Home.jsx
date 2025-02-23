@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import MapComponent from "../components/MapComponent";
 import Location from "../assets/location.png";
 import navBurger from "../assets/burger.svg";
-import { AiOutlineClose } from "react-icons/ai"; // Import close icon
+import { AiOutlineClose } from "react-icons/ai"
 import driver from "../assets/driver.png";
 import login from "../assets/login.png"
+import { Link } from "react-router-dom";
 
 function Home() {
     const [userLocation, setUserLocation] = useState(null);
@@ -44,14 +45,25 @@ function Home() {
         );
     };
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isOpenUl && !event.target.closest(".menu-container")) {
+                setOpenUl(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+        return () => document.removeEventListener("click", handleClickOutside);
+    }, [isOpenUl]);
+
     const handlePhoneChange = (e) => {
-        let value = e.target.value.replace(/\D/g, ""); // Faqat raqamlarni saqlash
+        let value = e.target.value.replace(/\D/g, "");
 
         if (value.startsWith("998")) {
-            value = value.slice(3); // Agar foydalanuvchi 998 ni kiritgan bo‘lsa, olib tashlaymiz
+            value = value.slice(3);
         }
 
-        value = value.slice(0, 9); // Maksimum 9 ta raqam
+        value = value.slice(0, 9);
 
         let formatted = "";
         if (value.length > 7) {
@@ -70,17 +82,23 @@ function Home() {
     return (
         <div className="relative flex flex-col bg-gray-100 mx-auto max-w-md h-dvh font-display">
             <div className={`transition ${isModalOpen ? "blur-sm pointer-events-none" : ""}`}>
-                <button onClick={() => setOpenUl(!isOpenUl)} className="top-8 left-6 z-1 absolute bg-white shadow-md p-3 rounded-full active:scale-95 transition-all duration-300 cursor-pointer">
+                <button
+                    onClick={(event) => {
+                        event.stopPropagation();
+                        setOpenUl(!isOpenUl);
+                    }}
+                    className="top-8 left-6 z-1 absolute bg-white shadow-md p-3 rounded-full active:scale-95 transition-all duration-300 cursor-pointer select-none"
+                >
                     <img src={navBurger} alt="" className="w-6 h-6" />
                 </button>
                 <div>
                     <MapComponent userLocation={userLocation} />
                 </div>
-                <div  className="bottom-0 z-20 absolute bg-white shadow-xl px-4 py-6 rounded-tl-3xl rounded-tr-3xl w-full h-full max-h-[220px] transition-transform duration-300 ease-in-out">
+                <div className="bottom-0 z-20 absolute bg-white shadow-xl px-4 py-6 rounded-tl-3xl rounded-tr-3xl w-full h-full max-h-[220px] transition-transform duration-300 ease-in-out">
                     <div className="flex justify-center items-center">
                         <button
                             className="bottom-28 absolute flex items-center gap-2 bg-white px-20 py-3 border-2 border-black rounded-[12px] font-semibold text-black active:scale-95 transition-[0.3s] cursor-pointer"
-                             onClick={handleLocation}
+                            onClick={handleLocation}
                         >
                             <img src={Location} alt="" width={20} />
                             Lokatsiya
@@ -137,21 +155,18 @@ function Home() {
                 </div>
             )}
             {isOpenUl && (
-                <div className={"z-60 flex fixed items-center justify-center ml-[70px] mt-[90px] transition-all duration-300  opacity-100 scale-100  "}>
-                    <ul onClick={() => setOpenUl(false)} className="bg-white pt-[10px] pb-[10px] pl-[10px] pr-[10px] rounded-[4px]">
-                        <li>
-                            <button className="flex items-center">
-                                Haydovchilar <img src={driver} className="w-[30px]" alt="" />
-                            </button>
-                        </li>
-                        <li>
-                            <button className="flex items-center">
-                                Kirish <img className="w-[25px]" src={login} alt="" />
-                            </button>
-                        </li>
+                <div className="z-60 fixed flex justify-center items-center opacity-100 mt-[90px] ml-[70px] scale-100 transition-all duration-300">
+                    <ul className="flex flex-col gap-[5px] bg-white px-[15px] py-[10px] rounded-md menu-container">
+                        <Link to={'/drivers'} className="flex items-center gap-[7px]">
+                            <img src={driver} className="w-[25px]" alt="" />
+                            <p>Haydovchilar</p>
+                        </Link>
+                        <Link to={'/login'} className="flex items-center gap-[7px]">
+                            <img className="w-[25px]" src={login} alt="" />
+                            <p>Kirish</p>
+                        </Link>
                     </ul>
                 </div>
-
             )}
         </div>
     );
