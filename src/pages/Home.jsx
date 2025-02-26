@@ -4,7 +4,7 @@ import Location from "../assets/location.png";
 import navBurger from "../assets/burger.svg";
 import { AiOutlineClose } from "react-icons/ai"
 import driver from "../assets/driver.png";
-import login from "../assets/login.png"
+import LogOut from "../assets/logOut.svg"
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -161,9 +161,9 @@ function Home() {
                             <img src={driver} className="w-[25px]" alt="" />
                             <p>Haydovchilar</p>
                         </Link>
-                        <Link to={'/login'} className="flex items-center gap-[7px]">
-                            <img className="w-[25px]" src={login} alt="" />
-                            <p>Kirish</p>
+                        <Link className="flex items-center gap-[8px]">
+                            <img className="ml-[7px] w-[15px]" src={LogOut} alt="" />
+                            <p>Chiqish</p>
                         </Link>
                     </ul>
                 </div>
