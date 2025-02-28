@@ -8,6 +8,8 @@ export async function postData(url, data) {
     const response = await instance.get(url, data, {
       headers: {
         Authorization: `Token ${token}`,
+        withCredentials: true,
+        
       },
     });
     return response.data;
@@ -23,6 +25,7 @@ export async function getData(url) {
     const response = await instance.get(url, {
       headers: {
         Authorization: `Token ${token}`,
+        withCredentials: true,
       },
     });
     return response.data;

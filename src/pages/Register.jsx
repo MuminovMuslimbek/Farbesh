@@ -8,7 +8,7 @@ function Register() {
     <div className='relative flex flex-col items-center bg-[#fff] px-6 py-10 min-h-screen overflow-hidden font-display'>
       <Header />
 
-      <div className="flex flex-col justify-center mt-[20px] mr-[40px] ml-[40px] w-full">
+      <div className="flex flex-col justify-center items-center mt-[20px] mr-[40px] ml-[40px] w-full">
         <h1 className='mb-[20px] font-bold text-xl text-center'>Roʻyxatdan oʻtish</h1>
         <form className="flex flex-col gap-[10px] w-full max-w-md select-none">
           <label className="relative flex flex-col gap-[7px] text-[14px]"> Ismingizni kiriting:
