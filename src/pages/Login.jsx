@@ -8,12 +8,13 @@ function Login() {
   const [username, setUsername] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const riderict = useNavigate();
 
-
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const userdatas = await axios.post(
@@ -32,22 +33,23 @@ function Login() {
         Cookies.remove("token");
         Cookies.set("token", userdatas.data.key);
         riderict("/home");
-      } 
-
-      
+      }
     } catch {
-      setErrMsg("! Foydalanuvchi nomi yoki parol notog'ri");
+      setErrMsg("Foydalanuvchi nomi yoki parol notog'ri");
+    } finally {
+      setLoading(false);
     }
   }
   return (
     <div className="relative flex flex-col items-center bg-[#fff] px-6 py-10 min-h-screen overflow-hidden font-display">
       <Header />
-
+      
       <div className="flex flex-col justify-center items-center mt-[20px] mr-[40px] ml-[40px] w-full">
         <h1 className="mb-[20px] font-bold text-xl text-center">
           Tizimga kirish
         </h1>
         <p className={`${errMsg ? "text-red-500" : "hidden"}`}>{errMsg}</p>
+
         <form
           onSubmit={handleSubmit}
           className="flex mt-5 flex-col gap-[12px] w-full max-w-md select-none"
@@ -58,9 +60,10 @@ function Login() {
               className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]"
               placeholder="Foydalanuvchi nomi"
               type="text"
+              required
               onChange={(e) => {
                 setUsername(e.target.value);
-                setErrMsg(""); // Xabarni yashirish
+                setErrMsg("");
               }}
             />
           </label>
@@ -71,19 +74,20 @@ function Login() {
               className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]"
               placeholder="Parol"
               type="password"
+              required
               onChange={(e) => {
                 setPwd(e.target.value);
-                setErrMsg(""); // Xabarni yashirish
+                setErrMsg("");
               }}
             />
           </label>
 
           <button
-            disabled={username && pwd ? false : true}
             type="submit"
             className="bg-[#FCE000] mt-[10px] px-3 py-2 rounded-md w-full font-medium active:scale-95 transition-[0.3s] cursor-pointer"
+            disabled={loading}
           >
-            Jo'natish
+            {loading ? "Yuklanmoqda..." : "Jo'natish"}
           </button>
           <p className="font-medium text-[12px] text-center">
             Hisobingiz yo'qmi?{" "}

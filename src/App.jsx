@@ -1,21 +1,24 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Start from './pages/Start'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Drivers from './pages/Drivers'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Start from "./pages/Start";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Drivers from "./pages/Drivers";
+import Layouts from "./loyout";
 
 function App() {
   return (
     <Routes>
       <Route index element={<Start />} />
-      <Route path='/home' element={<Home />} />
-      <Route path='/drivers' element={<Drivers />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route element={<Layouts />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/drivers" element={<Drivers />} />
+      </Route>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
