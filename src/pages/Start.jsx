@@ -12,11 +12,10 @@ function Start() {
     if (token) {
       navigate("/home");
     } else {
-      navigate("");
+      navigate("/");
     }
-  });
+  }, [token]);
 
-  
   return (
     <div className="relative flex flex-col items-center bg-[#151513] px-6 py-10 min-h-screen overflow-hidden font-display">
       <Header />

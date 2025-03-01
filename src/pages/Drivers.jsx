@@ -14,12 +14,13 @@ export default function Drivers() {
         const driversRes = await getData("v2/drivers/");
         console.log(driversRes.data);
         
-        setDriver(driversRes);
+        setDriver(driversRes.data);
       } catch (err) {
         console.log(err);
       }
+      getDrivers()
     }
-    getDrivers();
+    
   }, []);
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ export default function Drivers() {
         <h1 className="py-5 font-bold text-2xl text-center">Haydovchilar</h1>
       </div>
       <div className="flex flex-col items-center gap-[10px] px-6 h-[59%] overflow-y-auto overAuto">
-        {users.map((user) => (
+        {driver.map((user) => (
           <div
             key={user.id}
             className="flex justify-between items-center px-[20px] py-2 border border-[#FCE000] rounded-[16px] w-full"
