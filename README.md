@@ -22,9 +22,9 @@ Bizning platformamiz quyidagi texnologiyalar asosida qurilgan:
 
 ## 📞 Biz bilan bog‘lanish
 Agar sizda taklif yoki savollar bo‘lsa, quyidagi kanallar orqali biz bilan bog‘laning:
-📧 Email: muslimbekmuminov47@gmail.com 
-📱 Telegram: @muminovmuslimbek
-🌐 Vebsayt: farbesh.vercel.app
+📧 Email: [muslimbekmuminov47@gmail.com](muslimbekmuminov47@gmail.com) 
+📱 Telegram: [@muminovmuslimbek](https://t.me/muminovmuslimbek)
+🌐 Vebsayt: [Farbesh](https://farbesh.vercel.app)
 
 ## ⭐ GitHub'da qo‘llab-quvvatlang!
 Agar sizga platformamiz yoqsa, yulduzcha ⭐ bosib qo‘ying va loyihani rivojlantirishga o‘z hissangizni qo‘shing!
