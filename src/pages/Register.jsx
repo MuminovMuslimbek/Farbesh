@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
+import EyesOpen from '../assets/eyesOpen.svg'
+import EyesClosed from '../assets/eyesClosed.svg'
 
 function Register() {
-  return (
+  const [show1, setShow1] = useState(true)
+  const [show2, setShow2] = useState(true)
 
+  return (
     <div className='relative flex flex-col items-center bg-[#fff] px-6 py-10 min-h-screen overflow-hidden font-display'>
       <Header />
 
@@ -16,11 +20,13 @@ function Register() {
           </label>
 
           <label className="relative flex flex-col gap-[7px] text-[14px]"> Paro'lnni kiriting:
-            <input type="password" placeholder="Parol" className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full min-w-20 max-w-2xl font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]" />
+            <input type={show1 ? 'password' : 'text'} placeholder="Parol" className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full min-w-20 max-w-2xl font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]" />
+            <img onClick={() => { setShow1(!show1) }} className='right-[14px] bottom-2 z-10 absolute w-[20px] cursor-pointer' src={show1 ? EyesOpen : EyesClosed} />
           </label>
 
           <label className="relative flex flex-col gap-[7px] text-[14px]"> Parolni qayta kiriting:
-            <input type="password" placeholder="Parolni tastiqlash" className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full min-w-20 max-w-2xl font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]" />
+            <input type={show2 ? 'password' : 'text'} placeholder="Parolni tastiqlash" className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full min-w-20 max-w-2xl font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]" />
+            <img onClick={() => { setShow2(!show2) }} className='right-[14px] bottom-2 z-10 absolute w-[20px] cursor-pointer' src={show2 ? EyesOpen : EyesClosed} />
           </label>
 
           <button className="bg-[#FCE000] mt-[10px] px-3 py-2 rounded-md w-full max-w-2xl font-medium active:scale-95 transition-[0.3s] cursor-pointer">
