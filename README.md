@@ -41,7 +41,7 @@ Bu platforma orqali Farg‘ona va Beshariq orasida tez, qulay va ishonchli harak
 
 | Asosiy sahifa | Tizimga Kirish Sahifasi | Yo'lovchi parametrlari sahifasi |
 | ------------- | --------------- | --------------- |
-| ![image](https://github.com/user-attachments/assets/56ec894f-3793-48a0-953a-723f3141a989) | ![image](https://github.com/user-attachments/assets/f932e32c-fbe7-43e7-a579-c1320d916561) | ![image](https://github.com/user-attachments/assets/2c4a9a25-0374-4df9-bf4c-efe8ef219701) |
+| ![image](https://github.com/user-attachments/assets/a9520113-bf7a-457d-b4d6-6cbe114e03c7) | ![image](https://github.com/user-attachments/assets/f932e32c-fbe7-43e7-a579-c1320d916561) | ![image](https://github.com/user-attachments/assets/f70f3691-3d6a-4ef7-9113-a86ff29380de) |
 
 ## 🛠 Texnologiyalar
 - **Frontend**: HTML, CSS, JavaScript (React.js)
