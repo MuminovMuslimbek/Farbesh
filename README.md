@@ -1,4 +1,4 @@
-# Farg‘onadan Beshariqqa yoki Beshariqdan Farg‘onaga oson yetib olish mumkin bo'lgan yagona platforma
+# Farbesh – Farg‘onadan Beshariqqa yoki Beshariqdan Farg‘onaga oson yetib olish mumkin bo'lgan yagona platforma
 
 🚀 **Xush kelibsiz!**
 
@@ -13,18 +13,55 @@ Bu platforma orqali Farg‘ona va Beshariq orasida tez, qulay va ishonchli harak
 ✅ Oson va tezkor buyurtma qilish
 ✅ Eng qulay yo‘nalishlarni ko‘rish imkoniyati
 ✅ Ishonchli haydovchilar va xavfsiz xizmatlar
+✅ 🌗 Light & Dark rejim – foydalanuvchi xohishiga qarab interfeys rangini almashtirish
 
-## 🛠️ Texnologiyalar
-Bizning platformamiz quyidagi texnologiyalar asosida qurilgan:
-- HTML, CSS va JavaScript yani React kutibhonasida 
-- Backend uchun Python
-- Ma’lumotlar bazasi: PostgreSQL
+## 📌 Saytga tashrif buyuring:
+🔗 [Farbesh Web App](https://farbesh.vercel.app)
 
-## 📞 Biz bilan bog‘lanish
-Agar sizda taklif yoki savollar bo‘lsa, quyidagi kanallar orqali biz bilan bog‘laning:
-📧 Email: [muslimbekmuminov47@gmail.com](muslimbekmuminov47@gmail.com) 
-📱 Telegram: [@muminovmuslimbek](https://t.me/muminovmuslimbek)
-🌐 Vebsayt: [Farbesh](https://farbesh.vercel.app)
+## 🛠 O‘rnatish va Ishga Tushirish
 
-## ⭐ GitHub'da qo‘llab-quvvatlang!
-Agar sizga platformamiz yoqsa, yulduzcha ⭐ bosib qo‘ying va loyihani rivojlantirishga o‘z hissangizni qo‘shing!
+1. **Repositoryni klonlash:**
+   ```bash
+   git clone https://github.com/username/farbesh.git
+   ```
+2. **Loyihaga kirish:**
+   ```bash
+   cd farbesh
+   ```
+3. **NPM paketlarini o‘rnatish:**
+   ```bash
+   npm install
+   ```
+4. **Lokal serverni ishga tushirish:**
+   ```bash
+   npm run dev
+   ```
+
+## 📸 Ekran Rasmlari
+
+| Asosiy sahifa | Tizimga Kirish Sahifasi | Yo'lovchi parametrlari sahifasi |
+| ------------- | --------------- | --------------- |
+| ![image](https://github.com/user-attachments/assets/56ec894f-3793-48a0-953a-723f3141a989) | ![image](https://github.com/user-attachments/assets/f932e32c-fbe7-43e7-a579-c1320d916561) | ![image](https://github.com/user-attachments/assets/2c4a9a25-0374-4df9-bf4c-efe8ef219701) |
+
+## 🛠 Texnologiyalar
+- **Frontend**: HTML, CSS, JavaScript (React.js)
+- **Backend**: Python
+- **Ma’lumotlar bazasi**: PostgreSQL
+
+## 💡 Foydalanish
+1. Platformaga kirib, kerakli yo‘nalishni tanlash.
+2. Buyurtma berish va transportni kutish.
+3. Xizmatdan foydalanish va yo‘lga chiqish.
+4. Fikr-mulohazalar bildirish.
+
+## 📞 Aloqa
+Agar sizda savollar bo‘lsa yoki loyiha bo‘yicha fikr-mulohazalar bildirmoqchi bo‘lsangiz, biz bilan bog‘laning:
+
+📧 Email: [muslimbekmuminov47@gmail.com](mailto:muslimbekmuminov47@gmail.com)  
+📱 Telegram: [@muminovmuslimbek](https://t.me/muminovmuslimbek)  
+🌐 Veb-sayt: [Farbesh](https://farbesh.vercel.app)
+
+---
+
+⭐ Agar loyiha sizga yoqgan bo‘lsa, GitHub'da **yulduzcha** qo‘shib qo‘ying!
+
