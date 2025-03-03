@@ -3,13 +3,15 @@ import Header from "../components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import EyesOpen from '../assets/eyesOpen.svg'
+import EyesClosed from '../assets/eyesClosed.svg'
 
 function Login() {
   const [username, setUsername] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const [show, setShow] = useState(true)
   const riderict = useNavigate();
 
   async function handleSubmit(e) {
@@ -43,7 +45,7 @@ function Login() {
   return (
     <div className="relative flex flex-col items-center bg-[#fff] px-6 py-10 min-h-screen overflow-hidden font-display">
       <Header />
-      
+
       <div className="flex flex-col justify-center items-center mt-[20px] mr-[40px] ml-[40px] w-full">
         <h1 className="mb-[20px] font-bold text-xl text-center">
           Tizimga kirish
@@ -52,7 +54,7 @@ function Login() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex mt-5 flex-col gap-[12px] w-full max-w-md select-none"
+          className="flex flex-col gap-[12px] mt-5 w-full max-w-md select-none"
         >
           <label className="relative flex flex-col gap-[7px] text-[14px]">
             Foydalanuvchi nomini kiriting:
@@ -73,13 +75,14 @@ function Login() {
             <input
               className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]"
               placeholder="Parol"
-              type="password"
+              type={show ? 'password' : 'text'}
               required
               onChange={(e) => {
                 setPwd(e.target.value);
                 setErrMsg("");
               }}
             />
+            <img onClick={() => { setShow(!show) }} className='right-[14px] bottom-2 z-10 absolute w-[20px] cursor-pointer' src={show ? EyesOpen : EyesClosed} />
           </label>
 
           <button

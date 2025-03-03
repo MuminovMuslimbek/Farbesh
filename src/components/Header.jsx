@@ -4,8 +4,8 @@ import InfoIcon from "../assets/infoIcon.svg";
 
 function Header() {
   return (
-    <header className="flex mx-auto justify-between items-center pb-6 border-[#737371] border-b w-full max-w-md select-none">
-      <div className="flex items-center gap-2 text-[#F5CE55] text-xl">
+    <header className="flex justify-between items-center mx-auto pb-6 border-[#737371] border-b w-full max-w-md select-none">
+      <div className="flex items-center gap-2 text-[#FCE000] text-xl">
         <img src={Logo} className="rounded-full w-12 h-12" alt="FarBesh Logo" />
         <h1 className="font-bold">FarBesh</h1>
       </div>

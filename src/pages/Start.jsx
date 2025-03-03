@@ -17,16 +17,16 @@ function Start() {
   }, [token]);
 
   return (
-    <div className="relative flex flex-col items-center bg-[#151513] px-6 py-10 min-h-screen overflow-hidden font-display">
+    <div className="relative flex flex-col items-center bg-white px-6 py-10 min-h-screen overflow-hidden font-display">
       <Header />
 
-      <div className="relative mt-[50px] flex flex-col flex-grow items-center gap-6 pb-40 w-full max-w-sm text-center">
+      <div className="relative flex flex-col flex-grow items-center gap-6 mt-[50px] pb-40 w-full max-w-sm text-center">
         <div>
-          <h2 className="font-semibold text-white text-2xl">
-            Taxi of your dreams
+          <h2 className="font-semibold text-black text-2xl">
+            Sizning orzuingizdagi taksi
           </h2>
-          <p className="opacity-70 mt-2 font-medium text-white text-base">
-            Comfortable rides around the city
+          <p className="opacity-70 mt-2 font-medium text-black text-base">
+            Shahar bo'ylab qulay sayohatlar
           </p>
         </div>
 
@@ -42,7 +42,7 @@ function Start() {
           <Link
             to="/login"
             type="button"
-            className="bottom-5 z-10 absolute bg-gradient-to-r from-[#E9BC32] to-[#FFDC71] py-3 rounded-lg w-4/5 font-semibold text-black active:scale-95 transition-[0.3s] cursor-pointer"
+            className="bottom-5 z-10 absolute bg-[#FCE000] bg-gradient-to-r py-3 rounded-lg w-4/5 font-semibold text-black active:scale-95 transition-[0.3s] cursor-pointer"
           >
             Kirish
           </Link>

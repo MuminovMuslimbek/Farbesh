@@ -3,7 +3,7 @@ import MapComponent from "../components/MapComponent";
 import Location from "../assets/location.png";
 import navBurger from "../assets/burger.svg";
 import { AiOutlineClose } from "react-icons/ai";
-import driver from "../assets/driver.png";
+import driver from "../assets/driver.svg";
 import LogOut from "../assets/logOut.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { postData } from "../api/service";
@@ -213,9 +213,9 @@ function Home() {
                 Cookies.remove("token");
                 navigate("/");
               }}
-              className="flex cursor-pointer items-center gap-[8px]"
+              className="flex items-center gap-[12px] cursor-pointer"
             >
-              <img className="ml-[7px] w-[15px]" src={LogOut} alt="" />
+              <img className="ml-[5px] w-[15px]" src={LogOut} alt="" />
               <p>Chiqish</p>
             </button>
           </ul>

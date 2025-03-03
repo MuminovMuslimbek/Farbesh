@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie"
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import EyesOpen from '../assets/eyesOpen.svg'
+import EyesClosed from '../assets/eyesClosed.svg'
 
 function Register() {
   const [show1, setShow1] = useState(true);
@@ -58,9 +60,8 @@ function Register() {
         setLoading(false); // Yuborish jarayoni tugadi
       });
   };
-
   return (
-    <div className="relative flex flex-col items-center bg-[#fff] px-6 py-10 min-h-screen overflow-hidden font-display">
+    <div className='relative flex flex-col items-center bg-[#fff] px-6 py-10 min-h-screen overflow-hidden font-display'>
       <Header />
 
       <div className="flex flex-col justify-center items-center mt-[20px] mr-[40px] ml-[40px] w-full">
@@ -83,7 +84,6 @@ function Register() {
               required
             />
           </label>
-
           <label className="relative flex flex-col gap-[7px] text-[14px]">
             {" "}
             Email pochtangizni kiriting:
@@ -96,7 +96,6 @@ function Register() {
               required
             />
           </label>
-
           <label className="relative flex flex-col gap-[7px] text-[14px]">
             {" "}
             Parolni kiriting:
@@ -114,6 +113,14 @@ function Register() {
             >
               {show1 ? <IoEye size={20} /> : <IoEyeOff size={20} />}
             </div>
+          <label className="relative flex flex-col gap-[7px] text-[14px]"> Paro'lnni kiriting:
+            <input type={show1 ? 'password' : 'text'} placeholder="Parol" className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full min-w-20 max-w-2xl font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]" />
+            <img onClick={() => { setShow1(!show1) }} className='right-[14px] bottom-2 z-10 absolute w-[20px] cursor-pointer' src={show1 ? EyesOpen : EyesClosed} />
+          </label>
+
+          <label className="relative flex flex-col gap-[7px] text-[14px]"> Parolni qayta kiriting:
+            <input type={show2 ? 'password' : 'text'} placeholder="Parolni tastiqlash" className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full min-w-20 max-w-2xl font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]" />
+            <img onClick={() => { setShow2(!show2) }} className='right-[14px] bottom-2 z-10 absolute w-[20px] cursor-pointer' src={show2 ? EyesOpen : EyesClosed} />
           </label>
 
           <label className="relative flex flex-col gap-[7px] text-[14px]">
