@@ -45,7 +45,6 @@ function Register() {
       })
       .catch((error) => {
         setError(
-          "Xato: " +
           (error.response?.data?.message ||
             "Serverda xatolik! Iltimos, birozdan so‘ng urinib ko‘ring!")
         );

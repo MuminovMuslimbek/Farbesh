@@ -21,7 +21,7 @@ function Start() {
       <Header />
 
       <div className="relative flex flex-col flex-grow items-center gap-6 mt-[50px] pb-40 w-full max-w-sm text-center">
-        <div>
+        <div className="absolute z-10">
           <h2 className="font-semibold text-black text-2xl">
             Sizning orzuingizdagi taksi
           </h2>
