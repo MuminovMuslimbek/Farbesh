@@ -3,7 +3,7 @@ import MapComponent from "../components/MapComponent";
 import Location from "../assets/location.png";
 import navBurger from "../assets/burger.svg";
 import { AiOutlineClose } from "react-icons/ai";
-import LogOut from "../assets/logout.svg";
+import LogOut from "../assets/logOut.svg";
 import driver from '../assets/driver.svg'
 import { Link, useNavigate } from "react-router-dom";
 import { postData } from "../api/service";
