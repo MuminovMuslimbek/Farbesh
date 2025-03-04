@@ -17,15 +17,15 @@ function Start() {
   }, [token]);
 
   return (
-    <div className="relative flex flex-col items-center bg-[#151513] px-6 py-10 min-h-screen overflow-hidden font-display">
+    <div className="relative flex flex-col items-center bg-white px-6 py-10 min-h-screen overflow-hidden font-display">
       <Header />
 
       <div className="relative flex flex-col flex-grow items-center gap-6 mt-[50px] pb-40 w-full max-w-sm text-center">
         <div>
-          <h2 className="font-semibold text-white text-2xl">
+          <h2 className="font-semibold text-black text-2xl">
             Sizning orzuingizdagi taksi
           </h2>
-          <p className="opacity-70 mt-2 font-medium text-white text-base">
+          <p className="opacity-70 mt-2 font-medium text-black text-base">
             Shahar bo'ylab qulay sayohatlar
           </p>
         </div>
