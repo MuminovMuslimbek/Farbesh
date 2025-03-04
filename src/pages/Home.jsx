@@ -320,10 +320,10 @@ function Home() {
                   Cookies.remove("token");
                   navigate("/");
                 }}
-                className="flex items-center gap-[12px] cursor-pointer"
+                className="flex text-red-500 items-center gap-[12px] cursor-pointer"
               >
                 <img className="ml-[5px] w-[15px]" src={LogOut} alt="" />
-                <p>Chiqish</p>
+                Chiqish
               </button>
 
             </ul>
