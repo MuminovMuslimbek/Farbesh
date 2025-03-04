@@ -3,7 +3,7 @@ import MapComponent from "../components/MapComponent";
 import Location from "../assets/location.png";
 import navBurger from "../assets/burger.svg";
 import { AiOutlineClose } from "react-icons/ai";
-import LogOut from "../assets/logOut.svg";
+import LogOut from "../assets/logout.png";
 import driver from '../assets/driver.svg'
 import { Link, useNavigate } from "react-router-dom";
 import { postData } from "../api/service";
@@ -17,6 +17,7 @@ function Home() {
   const [isOpenUl, setOpenUl] = useState(false);
   const [phone, setPhone] = useState("");
   const [route, setRoute] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [passengerCount, setPassengerCount] = useState("");
   const [gender, setGender] = useState("");
   const phoneRef = useRef('');
@@ -24,12 +25,6 @@ function Home() {
   const [countdown, setCountdown] = useState(0);
   const navigate = useNavigate();
   const token = Cookies.get("token");
-
-  useEffect(() => {
-    if (token == null) {
-      navigate("/");
-    }
-  }, [token, navigate]);
 
   const orderData = {
     "direction": `${route}`,
@@ -39,7 +34,6 @@ function Home() {
     "latitude": userLocation ? userLocation[0] : null,
     "longitude": userLocation ? userLocation[1] : null,
   };
-  console.log(orderData);
 
   function handleOrderClick() {
     if (!userLocation) {
@@ -49,35 +43,53 @@ function Home() {
 
     if (phoneRef.current.value.length < 14) {
       alert("Telefon raqamni kiriting");
-    } else {
-      setIsOrderButtonDisabled(true);
-      const disableUntil = Date.now() + 300000; // 5 minutes
-      localStorage.setItem("orderDisabledTime", disableUntil.toString());
-      setCountdown(300); // Set countdown to 300 seconds
-
-      axios.post("https://farbesh.up.railway.app/api/v1/send_order/", orderData, {
-        headers: {
-          Authorization: `Token ${Cookies.get('token')}`
-        }
-      })
-        .then((response) => {
-          console.log("Success:", response.data);
-          alert("Sizning so'rovingiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog'lanishadi! ✅");
-          setIsModalOpen(false);
-          setRoute("");
-          setPassengerCount("");
-          setGender("");
-          setPhone("");
-          startCountdown(300); // Start countdown
-        })
-        .catch((error) => {
-          console.error("Xatolik:", error);
-          alert("Xatolik yuz berdi. Qayta urinib ko‘ring.");
-          setIsOrderButtonDisabled(false);
-          localStorage.removeItem("orderDisabledTime");
-        });
+      return;
     }
+
+    if (!route) {
+      alert("Iltimos, yo'nalishni tanlang.");
+      return;
+    }
+
+    if (!passengerCount) {
+      alert("Iltimos, yo'lovchi sonini tanlang.");
+      return;
+    }
+
+    if (!gender) {
+      alert("Iltimos, jinsni tanlang.");
+      return;
+    }
+
+    setIsOrderButtonDisabled(true);
+    setIsLoading(true); // Set loading state to true
+
+    axios.post("https://farbesh.up.railway.app/api/v1/send_order/", orderData, {
+      headers: {
+        Authorization: `Token ${Cookies.get('token')}`
+      }
+    })
+      .then((response) => {
+        console.log("Success:", response.data);
+        alert("Sizning so'rovingiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog'lanishadi! ✅");
+        setIsModalOpen(false);
+        setRoute("");
+        setPassengerCount("");
+        setGender("");
+        setPhone("");
+        startCountdown(300); // Start countdown
+      })
+      .catch((error) => {
+        console.error("Xatolik:", error);
+        alert("Xatolik yuz berdi. Qayta urinib ko‘ring.");
+        setIsOrderButtonDisabled(false);
+      })
+      .finally(() => {
+        setIsLoading(false); // Reset loading state
+      });
   }
+
+
 
   const startCountdown = (duration) => {
     let timeRemaining = duration;
@@ -114,6 +126,7 @@ function Home() {
       return () => clearTimeout(timer);
     }
   }, [alertMessage]);
+
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -212,7 +225,6 @@ function Home() {
               Lokatsiya
             </button>
           </div>
-
           <div className="flex justify-center items-center">
             {isOrderButtonDisabled && (
               <div className="text-red-500 mb-2">
@@ -275,35 +287,55 @@ function Home() {
                 className="bg-white p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFDC71] w-full text-gray-800 text-sm"
                 maxLength={17}
               />
-
-              <button onClick={handleOrderClick} className="bg-[#151513] shadow-md py-3 rounded-[12px] w-full font-semibold text-white active:scale-95 transition-all duration-300 cursor-pointer">
+              {/* <button onClick={handleOrderClick} className="bg-[#151513] shadow-md py-3 rounded-[12px] w-full font-semibold text-white active:scale-95 transition-all duration-300 cursor-pointer">
                 Buyurtma berish
+              </button> */}
+              <button
+                onClick={handleOrderClick}
+                disabled={isOrderButtonDisabled}
+                className={`bg-[#151513] shadow-md py-3 rounded-[12px] w-full font-semibold text-white active:scale-95 transition-all duration-300 cursor-pointer
+    ${isLoading ? 'opacity-50' : 'opacity-100'}`} // Opacity ni kamaytirish
+              >
+                {isLoading ? 'Yuborilmoqda...' : 'Buyurtma berish'} {/* Tugma matni */}
               </button>
+
             </form>
-            <button className="top-4 right-4 absolute text-gray-500 hover:text-gray-700 cursor-pointer" onClick={() => setIsModalOpen(false)}>
+            <button className="top-4 right-4 absolute text-gray-500 hover:text-gray-700 cursor-pointer" onClick={() => { setIsModalOpen(false), setRoute(""), setPassengerCount(""), setGender(""), setPhone("") }}>
               <AiOutlineClose className="w-6 h-6" />
             </button>
           </div>
         </div>
-      )}
-      {isOpenUl && (
-        <div className="z-60 fixed flex justify-center items-center opacity-100 mt-[50px] ml-[80px] scale-100 transition-all duration-300">
-          <ul className="flex flex-col gap-[5px] bg-white px-[15px] py-[10px] rounded-md menu-container">
-            <Link to={'/drivers'} className="flex items-center gap-[7px]">
-              <img src={driver} className="w-[25px]" alt="" />
-              <p>Haydovchilar</p>
-            </Link>
-            <Link to={'/login'} className="flex items-center gap-[7px]">
-              <img className="w-[25px]" src={LogOut} alt="" />
-              <p>Chiqish</p>
-            </Link>
-          </ul>
-        </div>
-      )}
-      {alertMessage && (
-        <div className={`alert ${alertMessage.type}`}>{alertMessage.text}</div>
-      )}
-    </div>
+      )
+      }
+      {
+        isOpenUl && (
+          <div className="z-60 fixed flex justify-center items-center opacity-100 mt-[50px] ml-[80px] scale-100 transition-all duration-300">
+            <ul className="flex flex-col gap-[5px] bg-white px-[15px] py-[10px] rounded-md menu-container">
+              {/* <Link to={'/drivers'} className="flex items-center gap-[7px]">
+                <img src={driver} className="w-[25px]" alt="" />
+                <p>Haydovchilar</p>
+              </Link> */}
+              <button
+                onClick={() => {
+                  Cookies.remove("token");
+                  navigate("/");
+                }}
+                className="flex items-center gap-[12px] cursor-pointer"
+              >
+                <img className="ml-[5px] w-[15px]" src={LogOut} alt="" />
+                <p>Chiqish</p>
+              </button>
+
+            </ul>
+          </div>
+        )
+      }
+      {
+        alertMessage && (
+          <div className={`alert ${alertMessage.type}`}>{alertMessage.text}</div>
+        )
+      }
+    </div >
   );
 }
 

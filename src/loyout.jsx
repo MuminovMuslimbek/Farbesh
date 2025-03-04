@@ -9,7 +9,7 @@ const Layouts = () => {
   }
 
   return (
-    <Outlet/>
+    <Outlet />
   );
 };
 // Layout jsx loginni tekshirish maqsadida nimaga deb o'ylab yurmaylar!!
