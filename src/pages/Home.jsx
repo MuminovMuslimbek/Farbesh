@@ -24,7 +24,7 @@ function Home() {
 
   useEffect(() => {
     if (token == null) {
-        navigate("/")
+      navigate("/")
     }
   });
 
@@ -105,9 +105,8 @@ function Home() {
   return (
     <div className="relative flex flex-col bg-gray-100 mx-auto max-w-md h-dvh font-display">
       <div
-        className={`transition ${
-          isModalOpen ? "blur-sm pointer-events-none" : ""
-        }`}
+        className={`transition ${isModalOpen ? "blur-sm pointer-events-none" : ""
+          }`}
       >
         <button
           onClick={(event) => {
