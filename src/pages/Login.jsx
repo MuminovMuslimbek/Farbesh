@@ -3,45 +3,52 @@ import Header from "../components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import EyesOpen from '../assets/eyesOpen.svg'
-import EyesClosed from '../assets/eyesClosed.svg'
+import EyesOpen from "../assets/eyesOpen.svg";
+import EyesClosed from "../assets/eyesClosed.svg";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(true);
   const riderict = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
 
+    const isEmail = username.includes("@");
+    const payload = {
+      password: pwd,
+      ...(isEmail ? { email: username } : { username: username }),
+    };
+    console.log(isEmail ? username: "username buu");
+    
+
     try {
-      const userdatas = await axios.post(
-        "https://farbesh.up.railway.app/api/auth/login",
-        {
-          username: username,
-          password: pwd,
-        },
+      const { data } = await axios.post(
+        "api/auth/login",
+        payload,
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
 
-      if (userdatas.data.key) {
-        Cookies.remove("token");
-        Cookies.set("token", userdatas.data.key);
+      if (data.key) {
+        Cookies.set("token", data.key);
         riderict("/home");
       }
-    } catch {
+    } catch(err) {
+      console.log(err.response?.data);
+      
       setErrMsg("Foydalanuvchi nomi yoki parol notog'ri");
     } finally {
       setLoading(false);
     }
   }
+
   return (
     <div className="relative flex flex-col items-center bg-[#fff] px-6 py-10 min-h-screen overflow-hidden font-display">
       <Header />
@@ -57,10 +64,10 @@ function Login() {
           className="flex flex-col gap-[12px] mt-5 w-full max-w-md select-none"
         >
           <label className="relative flex flex-col gap-[7px] text-[14px]">
-            Foydalanuvchi nomini kiriting:
+            Foydalanuvchi nomi yoki emailni kiriting:
             <input
               className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]"
-              placeholder="Foydalanuvchi nomi"
+              placeholder="Foydalanuvchi nomi yoki email"
               type="text"
               required
               onChange={(e) => {
@@ -75,14 +82,18 @@ function Login() {
             <input
               className="bg-white shadow-sm px-3 py-2 border focus:border-[#FCE000] rounded-md outline-none focus:ring-0 w-full font-medium text-[#0C0E16] placeholder:text-[#0C0E16] text-sm transition-all[0.4s]"
               placeholder="Parol"
-              type={show ? 'password' : 'text'}
+              type={show ? "password" : "text"}
               required
               onChange={(e) => {
                 setPwd(e.target.value);
                 setErrMsg("");
               }}
             />
-            <img onClick={() => { setShow(!show) }} className='right-[14px] bottom-2 z-10 absolute w-[20px] cursor-pointer' src={show ? EyesOpen : EyesClosed} />
+            <img
+              onClick={() => setShow(!show)}
+              className="right-[14px] bottom-2 z-10 absolute w-[20px] cursor-pointer"
+              src={show ? EyesOpen : EyesClosed}
+            />
           </label>
 
           <button

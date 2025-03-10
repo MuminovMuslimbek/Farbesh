@@ -26,7 +26,7 @@ function Start() {
             Sizning orzuingizdagi taksi
           </h2>
           <p className="opacity-70 mt-2 font-medium text-black text-base">
-            Shahar bo'ylab qulay sayohatlar
+            Shaharlar bo'ylab qulay sayohatlar
           </p>
         </div>
 

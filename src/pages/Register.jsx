@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import EyesOpen from "../assets/eyesOpen.svg";
 import EyesClosed from "../assets/eyesClosed.svg";
 
+
 function Register() {
   const [show1, setShow1] = useState(true);
   const [show2, setShow2] = useState(true);
@@ -42,8 +43,10 @@ function Register() {
         password2: repassword,
       })
       .then((response) => {
+        console.log(response);
+
         Cookies.remove("token");
-        Cookies.set("token", response.key);
+        Cookies.set("token", response?.data.key);
         navigate("/home");
         setUsername("");
         setEmail("");
@@ -53,7 +56,6 @@ function Register() {
         setLoading(false);
       })
       .catch((error) => {
-
         if (error.response?.data.username) {
           setError(
             "Ushbu foydalanuvchi nomiga ega foydalanuvchi allaqachon mavjud."

@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Drivers from "./pages/Drivers";
 import Layouts from "./loyout";
+import GoogleRegister from "./google";
 
 function App() {
   return (
