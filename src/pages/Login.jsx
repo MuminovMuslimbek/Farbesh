@@ -28,7 +28,7 @@ function Login() {
 
     try {
       const { data } = await axios.post(
-        "api/auth/login",
+        "https://farbesh.up.railway.app/api/auth/login",
         payload,
         {
           headers: { "Content-Type": "application/json" },

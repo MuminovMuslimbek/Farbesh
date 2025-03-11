@@ -4,9 +4,7 @@ import Start from "./pages/Start";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Drivers from "./pages/Drivers";
 import Layouts from "./loyout";
-import GoogleRegister from "./google";
 
 function App() {
   return (
@@ -16,7 +14,6 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route element={<Layouts />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/drivers" element={<Drivers />} />
       </Route>
     </Routes>
   );

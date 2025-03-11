@@ -4,9 +4,7 @@ import Location from "../assets/location.png";
 import navBurger from "../assets/burger.svg";
 import { AiOutlineClose } from "react-icons/ai";
 import LogOut from "../assets/logout.png";
-import driver from "../assets/driver.svg";
-import { Link, useNavigate } from "react-router-dom";
-import { postData } from "../api/service";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 
@@ -41,7 +39,7 @@ function Home() {
     longitude: userLocation ? userLocation[1] : null,
   };
 
-  function handleOrderClick() {
+  async function handleOrderClick() {
     if (!userLocation) {
       alert("Lokatsiya aniqlanmadi. Iltimos, lokatsiyangizni tekshiring.");
       return;
@@ -70,8 +68,8 @@ function Home() {
     setIsOrderButtonDisabled(true);
     setIsLoading(true); // Set loading state to true
 
-    axios
-      .post("http://127.0.0.1:8000/api/v1/send_order/", orderData, {
+    await axios
+      .post("https://farbesh.up.railway.app/api/v1/send_order/", orderData, {
         headers: {
           Authorization: `Token ${Cookies.get("token")}`,
         },
