@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import BgImage from "../assets/starts-bg.png";
+import BgImage from "../assets/start-bg.png";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Cookies from "js-cookie";
@@ -17,7 +17,7 @@ function Start() {
   }, [token]);
 
   return (
-    <div className="relative flex flex-col items-center bg-white px-6 py-10 min-h-screen overflow-hidden font-display">
+    <div className=" flex flex-col items-center min-h-dvh max-h-dvh bg-[#5CC3D6] px-6 py-10  overflow-hidden font-display">
       <Header />
 
       <div className="relative flex flex-col flex-grow items-center gap-6 mt-[50px] pb-40 w-full max-w-sm text-center">
@@ -49,7 +49,7 @@ function Start() {
           <Link
             to="/register"
             className={
-              "-bottom-5 z-10 absolute opacity-70 font-medium text-white text-base underline"
+              "-bottom-5 z-10 absolute opacity-70 font-medium text-black text-base underline"
             }
           >
             Ro'yxatdan o'tish

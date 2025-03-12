@@ -2,10 +2,12 @@
 @import "tailwindcss";
 
 
+
 @theme {
   --font-display: 'Montserrat';
+
 }
 
-.overAuto{
+.overAuto {
   scrollbar-width: none;
 }

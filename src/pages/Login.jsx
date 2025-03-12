@@ -24,7 +24,7 @@ function Login() {
       ...(isEmail ? { email: username } : { username: username }),
     };
     console.log(isEmail ? username: "username buu");
-    
+
 
     try {
       const { data } = await axios.post(
@@ -42,7 +42,7 @@ function Login() {
       }
     } catch(err) {
       console.log(err.response?.data);
-      
+
       setErrMsg("Foydalanuvchi nomi yoki parol notog'ri");
     } finally {
       setLoading(false);

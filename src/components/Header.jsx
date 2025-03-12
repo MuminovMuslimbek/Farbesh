@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/logo.webp";
+import Logo from "../assets/F5-logo.png";
 import InfoIcon from "../assets/infoIcon.svg";
 import { Link } from "react-router-dom";
 
