@@ -8,14 +8,16 @@ import Layouts from "./loyout";
 
 function App() {
   return (
-    <Routes>
-      <Route index element={<Start />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route element={<Layouts />}>
-        <Route path="/home" element={<Home />} />
-      </Route>
-    </Routes>
+    <div className="container max-w-dvh mx-auto">
+      <Routes>
+        <Route index element={<Start />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route element={<Layouts />}>
+          <Route path="/home" element={<Home />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 

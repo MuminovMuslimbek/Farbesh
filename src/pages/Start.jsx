@@ -34,7 +34,7 @@ function Start() {
           <img
             src={BgImage}
             alt="Background"
-            className="-bottom-11 z-[-5] absolute w-[250px] h-auto"
+            className="-bottom-11 z-[-5] absolute w-[220px] h-auto"
           />
         </div>
 
